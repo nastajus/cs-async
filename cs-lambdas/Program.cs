@@ -36,7 +36,27 @@ namespace cs_lambdas
             Console.ReadKey();
         }
 
+        class Person
+        {
+            private int cash;
 
+            public int Cash
+            {
+                get
+                {
+                    return cash;
+                }
+                set
+                {
+                    cash = value;
+                }
+            }
+
+            public void AddCash(int amount)
+            {
+                Cash += amount;
+            }
+        }
 
         //static void TestFunction()
         //{
@@ -45,5 +65,6 @@ namespace cs_lambdas
         //        Console.WriteLine(i);
         //    }
         //}
+
     }
 }
