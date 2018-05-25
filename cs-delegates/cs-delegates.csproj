@@ -7,7 +7,7 @@
     <ProjectGuid>{14D396FF-3975-485E-BEB8-B09A2B3E395D}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>cs_delegates</RootNamespace>
-    <AssemblyName>cs_delegates</AssemblyName>
+    <AssemblyName>cs-delegates</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
