@@ -12,6 +12,30 @@ namespace cs_lambdas
 
         static void Main(string[] args)
         {
+
+            //events
+            Person p = new Person();
+
+            //i want to be notified when this person gets $100+.
+            // to do this, i'm going to subscribe 
+            // use multicast syntax 
+            // we're holding reference to this function behind the scenes.
+
+            //THIS MAKES US A SUBSCRIBER:
+            p.cashEvent += P_cashEvent; //press "tab tab" for autocomplete after typing +=
+
+            p.AddCash(50);
+
+            p.AddCash(50);
+
+            // ----
+
+            //alternatively could do like this:
+            p.cashEvent += () => Console.WriteLine("has over 100 dollary doos");
+
+
+
+
             //anonymous method
             CountIt testDel = delegate(int y)
             {
@@ -36,8 +60,17 @@ namespace cs_lambdas
             Console.ReadKey();
         }
 
+        private static void P_cashEvent()
+        {
+            Console.WriteLine("PERSON HAS GAINED 100 DOLLARS");
+            //throw new NotImplementedException();
+        }
+
         class Person
         {
+            public delegate void MyEventHandler(); 
+            public event MyEventHandler cashEvent; 
+
             private int cash;
 
             public int Cash
@@ -48,7 +81,18 @@ namespace cs_lambdas
                 }
                 set
                 {
+                    //can breakpoint here to watch step-by-step.
                     cash = value;
+
+                    if (cash >= 100)
+                    {
+                        //let our subscribers know! 
+                        if (cashEvent != null)
+                        {
+                            //if there are no subscribers.. then the event would be null..
+                            cashEvent();
+                        }
+                    }
                 }
             }
 
